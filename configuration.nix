@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 
 {
   imports =
@@ -134,11 +134,11 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
     vim
     wget
+    unzip
     fastfetch
-    neovim
     mangohud
     lutris
     git
@@ -149,7 +149,14 @@
     lact
     kitty
     screen
-  ];
+    gcc
+    gnumake
+    xclip
+  ]) ++
+
+  (with pkgs-unstable; [
+    neovim
+  ]);
   
   # Steam
   programs.steam.enable = true;
