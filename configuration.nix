@@ -120,15 +120,6 @@
     shell = pkgs.zsh;
     description = "Wolf";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-      vesktop
-      spotify
-      vscode
-      btop
-      nvtop
-      htop
-    ];
   };
 
   # Enable automatic login for the user.
@@ -148,12 +139,10 @@
     wget
     fastfetch
     neovim
-    alacritty
     mangohud
     lutris
     git
     efibootmgr
-    starship
     vlc
     python3
     qbittorrent
