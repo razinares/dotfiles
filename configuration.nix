@@ -147,7 +147,6 @@
     python3
     qbittorrent
     lact
-    kitty
     screen
     gcc
     gnumake
