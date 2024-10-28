@@ -157,6 +157,13 @@
     neovim
   ]);
   
+  # Hyprland
+  programs.hyprland = {
+    enable = true;
+    package = pkgs-unstable.hyprland;
+    portalPackage = pkgs-unstable.xdg-desktop-portal-hyprland;
+  };
+
   # Steam
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;

@@ -5,7 +5,9 @@
   # manage.
   home.username = "wolf";
   home.homeDirectory = "/home/wolf";
-
+  imports = [ 
+    ./apps
+  ];
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -63,6 +65,11 @@
     };
   };
 
+  wayland.windowManager.hyprland = {
+    enable = true;
+    package = pkgs-unstable.hyprland;
+  };
+  home.sessionVariables.NIXOS_OZONE_WL = "1";
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
