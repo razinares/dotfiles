@@ -1,5 +1,5 @@
 # hyprland.nix
-{ config, pkgs, pkgs-unstable, ... }:
+{ config, pkgs, pkgs-stable, ... }:
 
 {
   wayland.windowManager.hyprland.settings = {
@@ -153,7 +153,7 @@
     waybar
     cava
     dunst
-    gnome.gnome-control-center
+    gnome-control-center
     grim
     slurp
   ];

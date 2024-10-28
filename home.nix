@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, ... }:
+{ config, pkgs, pkgs-stable, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -28,8 +28,8 @@
     nvtop
     htop
   ]) ++
-  (with pkgs-unstable; [
-    # Unstable packages here
+  (with pkgs-stable; [
+    # Stable packages here
   ]);
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -57,8 +57,7 @@
 
   programs.kitty = {
     enable = true;
-    package = pkgs-unstable.kitty;
-    theme = "Tokyo Night";
+    themeFile = "tokyo_night_night";
     font = {
       name = "FiraCode Nerd Font";  # Correct font family name
       size = 13; # Adjust the size as needed
@@ -67,7 +66,6 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs-unstable.hyprland;
   };
   home.sessionVariables.NIXOS_OZONE_WL = "1";
   # Let Home Manager install and manage itself.

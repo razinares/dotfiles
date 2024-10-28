@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, ... }:
+{ config, pkgs, pkgs-stable, ... }:
 
 {
   imports =
@@ -68,9 +68,9 @@
     LC_TIME = "en_US.UTF-8";
   };
   i18n.inputMethod = {
-    enabled = "fcitx5";
-    #type = "fcitx5";
-    #enable = true;
+    #enabled = "fcitx5";
+    type = "fcitx5";
+    enable = true;
     fcitx5.addons = with pkgs; [
       fcitx5-openbangla-keyboard
     ];
@@ -93,10 +93,9 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
   # AMD
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -151,17 +150,15 @@
     gcc
     gnumake
     xclip
+    neovim
   ]) ++
 
-  (with pkgs-unstable; [
-    neovim
+  (with pkgs-stable; [
   ]);
   
   # Hyprland
   programs.hyprland = {
     enable = true;
-    package = pkgs-unstable.hyprland;
-    portalPackage = pkgs-unstable.xdg-desktop-portal-hyprland;
   };
 
   # Steam

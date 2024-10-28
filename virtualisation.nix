@@ -1,6 +1,8 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, pkgs-stable, ... }:
 {
   # Enable common container config files in /etc/containers
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
   virtualisation.containers.enable = true;
   virtualisation = {
     podman = {
