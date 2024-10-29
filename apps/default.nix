@@ -4,5 +4,6 @@
     ./waybar
     ./rofi
     ./swaync
+    ./wlogout
   ];
 }
