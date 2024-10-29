@@ -70,6 +70,7 @@
     exec-once = [
       "waybar"
       "swaync"
+      "blueman-applet"
       "fcitx5 -d"
     ];
 
@@ -163,6 +164,7 @@
         "$mod, up, movefocus, u"
         "$mod, down, movefocus, d"
         "$mod SHIFT, L, exec, hyprctl dispatch exit"
+        "$mod SHIFT, S, exec, hyprshot -m region"
       ]
 
       ++ (
@@ -208,5 +210,7 @@
     libnotify # Notification
     hyprshot # Screenshot
   ];
+
+  services.blueman-applet.enable = true;
 }
 

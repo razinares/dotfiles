@@ -27,6 +27,7 @@
     btop
     nvtop
     htop
+    telegram-desktop
   ]) ++
   (with pkgs-stable; [
     # Stable packages here
