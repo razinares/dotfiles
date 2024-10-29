@@ -4,7 +4,7 @@
 
   programs.wlogout = {
     enable = true;
-    layout = {
+    layout = [
       {
         label = "shutdown";
         action = "systemctl poweroff";
@@ -15,7 +15,7 @@
         label = "reboot";
         action = "systemctl reboot";
         text = "Reboot";
-        keybind" = "r";
+        keybind = "r";
       }
       {
         label = "suspend";
@@ -27,13 +27,13 @@
         label = "hibernate";
         action = "systemctl hibernate";
         text = "Hibernate";
-        keybind" = "h";
+        keybind = "h";
       }
       {
         label = "lock";
         action = "hyprlock";
         text = "Lock";
-        keybind" = "l";
+        keybind = "l";
       }
       {
         label = "logout";
@@ -41,7 +41,7 @@
         text = "Logout";
         keybind = "e";
       }
-    };
+    ];
   };
 
 }

@@ -156,7 +156,7 @@
         "$mod, Q, killactive"
         "$mod, V, togglefloating"
         "$mod, U, exec, XDG_CURRENT_DESKTOP=gnome gnome-control-center"
-        "$mod, L, exec, hyprlock"
+        "$mod, L, exec, wlogout"
         
         # Move Focus
         "$mod, left, movefocus, l"
@@ -165,6 +165,11 @@
         "$mod, down, movefocus, d"
         "$mod SHIFT, L, exec, hyprctl dispatch exit"
         "$mod SHIFT, S, exec, hyprshot -m region"
+        "$mod, R, togglesplit"
+        "ALT,TAB,cyclenext"
+        "ALT,Tab,bringactivetotop"
+        "$mod, mouse_down, workspace, e+1"
+        "$mod, mouse_up, workspace, e-1"
       ]
 
       ++ (
