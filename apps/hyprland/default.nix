@@ -2,6 +2,65 @@
 { config, pkgs, pkgs-stable, ... }:
 
 {
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      preload = [ "/home/wolf/Downloads/wallpaper.png" ];
+      wallpaper = [ "DP-2, /home/wolf/Downloads/wallpaper.png" ];
+    };
+  };
+  programs.hyprlock = {
+    enable = true;
+    settings = {
+      background = [
+        {
+          monitor = "";
+          path = "${config.home.homeDirectory}/Downloads/512780.jpg";  # Make sure the path is correct
+          blur_passes = 0;
+          contrast = 0.8916;
+          brightness = 0.8916;
+          vibrancy = 0.8916;
+          vibrancy_darkness = 0.0;
+        }
+      ];
+
+      label =
+        {
+          monitor = "";
+          text = "DIE";
+          #text_align = "center";
+          color = "rgba(255, 255, 255, 1.0)";
+          font_size = 80;
+          font_family = "FiraCode Nerd Font";
+          rotate = 0;
+          position = "40 200";  # Adjusted to the center of 3072x1728 (scaled resolution)
+          halign = "center";
+          valign = "center";
+        };
+
+      input-field = [
+        {
+          size = "320 55";
+          outline_thickness = 2;
+          outer_color = "rgba(255, 255, 255, 0.5)";
+          inner_color = "rgba(0, 0, 0, 0.6)";
+          font_color = "rgba(255, 255, 255, 1.0)";
+          font_family = "FiraCode Nerd Font";
+          hide_input = false;
+          placeholder_text = "Password...";
+          position = "40 60";  # Centered below the label
+          halign = "center";
+          valign = "center";
+        }
+      ];
+    };
+  };
+
+
+
+
+
+    
   wayland.windowManager.hyprland.settings = {
 
     # Monitor config
@@ -11,6 +70,7 @@
     exec-once = [
       "waybar"
       "swaync"
+      "fcitx5 -d"
     ];
 
     env = [
@@ -18,6 +78,9 @@
       "GDK_BACKEND,wayland"
       "CLUTTER_BACKEND,wayland"
       "HYPRCURSOR_SIZE,24"
+      "GTK_IM_MODULE,fcitx"
+      "QT_IM_MODULE,fcitx"
+      "XMODIFIERS,@im=fcitx"
     ];
 
     general = {
@@ -92,13 +155,14 @@
         "$mod, Q, killactive"
         "$mod, V, togglefloating"
         "$mod, U, exec, XDG_CURRENT_DESKTOP=gnome gnome-control-center"
+        "$mod, L, exec, hyprlock"
         
         # Move Focus
         "$mod, left, movefocus, l"
         "$mod, right, movefocus, r"
         "$mod, up, movefocus, u"
         "$mod, down, movefocus, d"
-        "$mod, L, exec, hyprctl dispatch exit"
+        "$mod SHIFT, L, exec, hyprctl dispatch exit"
       ]
 
       ++ (
