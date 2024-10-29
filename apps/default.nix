@@ -3,5 +3,6 @@
     ./hyprland
     ./waybar
     ./rofi
+    ./swaync
   ];
 }

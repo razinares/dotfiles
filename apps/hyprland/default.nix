@@ -10,7 +10,7 @@
     # Startup apps
     exec-once = [
       "waybar"
-      "dunst"
+      "swaync"
     ];
 
     env = [
@@ -21,42 +21,33 @@
     ];
 
     general = {
-      gaps_in = 5;
-      gaps_out = 5;
-      border_size = 1;
-      "col.active_border" = "rgba(88888888)";
-      "col.inactive_border" = "rgba(00000088)";
-
-      allow_tearing = true;
+      gaps_in = 10;
+      gaps_out = 30;
+      border_size = 4;
+      gaps_workspaces = 50;
+      allow_tearing = false;
+      # Approximating gradients with solid colors from the Tokyo Night palette
+      "col.active_border" = "rgb(414A6B)";      # bb9af7ff - Purple
+      "col.inactive_border" = "rgb(303552)";    # 565f89cc - Muted Blue
+      layout = "dwindle";  # Layout must be passed as a string
       resize_on_border = true;
     };
 
+    
     decoration = {
-      rounding = 16;
+      rounding = 0;
+      drop_shadow = false;
+
       blur = {
-        enabled = true;
-        brightness = 1.0;
-        contrast = 1.0;
-        noise = 0.01;
-
-        vibrancy = 0.2;
-        vibrancy_darkness = 0.5;
-
-        passes = 4;
-        size = 7;
-
-        popups = true;
-        popups_ignorealpha = 0.2;
+          enabled = true;
+          size = 6;
+          passes = 3;
+          new_optimizations = true;
+          ignore_opacity = true;
+          xray = false;
       };
-
-      drop_shadow = true;
-      shadow_ignore_window = true;
-      shadow_offset = "0 15";
-      shadow_range = 100;
-      shadow_render_power = 2;
-      shadow_scale = 0.97;
-      "col.shadow" = "rgba(00000055)";
     };
+
 
     animations = {
       enabled = true;
@@ -68,17 +59,6 @@
       ];
     };
 
-
-    group = {
-      groupbar = {
-        font_size = 10;
-        gradients = false;
-        text_color = "rgb(b6c4ff)";
-      };
-
-      "col.border_active" = "rgba(35447988)";
-      "col.border_inactive" = "rgba(dce1ff88)";
-    };
 
     dwindle = {
       # keep floating dimentions while tiling
@@ -148,14 +128,21 @@
     size = 16;
   };
 
+
+
   # Add Hyprland and related packages to systemPackages
   home.packages = with pkgs; [
     waybar
     cava
-    dunst
     gnome-control-center
     grim
     slurp
+    hyprpaper
+    nautilus
+    jq # Parse
+    wl-clipboard # Clip
+    libnotify # Notification
+    hyprshot # Screenshot
   ];
 }
 
