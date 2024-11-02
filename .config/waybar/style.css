@@ -13,9 +13,9 @@
 /* Reset all styles */
 * {
     border: none;
-    border-radius: 3px;
+    border-radius: 2px;
     min-height: 0;
-    margin: 0.2em 0.3em 0.2em 0.3em;
+    margin: 0.15em 0.3em 0.15em 0.3em;
 }
 
 /* The whole bar */
@@ -64,7 +64,7 @@ window#waybar.hidden {
   /* border-radius: 20px; */
   /* padding-left: 10px; */
   /* padding-right: 10px; */
-  color: #64727d;
+  color: #d8dee9;
 }
 
 /* Each module */

@@ -9,9 +9,9 @@
 
     //"height": 20,
 
-    "margin-left": 10,
+    "margin-left": 0,
     "margin-bottom": 0,
-    "margin-right": 10,
+    "margin-right": 0,
 
     "spacing": 5, // Gaps between modules (4px)
 
@@ -21,14 +21,16 @@
         //"hyprland/submap",
         "temperature",
         //"idle_inhibitor",
-        //"mpd"
-        "custom/media"
+        //"mpd",
+        "hyprland/window",
     ],
     "modules-center": [
         //"hyprland/window"
         "clock#date",
-        "custom/weather"
-        //"custom/gammastep"
+        "custom/media",
+        "custom/cava",
+        "custom/weather",
+        
     ],
     "modules-right": [
         "backlight",
@@ -100,6 +102,7 @@
         "min-length": 7,
         "on-click": "xsensors"
     },
+
 
     "memory": {
         "interval": 30,
@@ -186,7 +189,7 @@
     },
 
     "custom/media": {
-        "format": "{icon} {}",
+        "format": "{}",
         "return-type": "json",
         "max-length": 40,
         "format-icons": {
@@ -194,8 +197,8 @@
             "default": "🎜"
         },
         "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null", // Script in resources folder
+        "on-click": "playerctl play-pause"
     },
 
     "custom/power": {
@@ -282,11 +285,6 @@
         "exec": "$HOME/.scripts/title"
     },
 
-    /*"custom/keyboard": {
-        "format": " {}",
-        "interval": 1,
-        "exec": "$HOME/.config/waybar/get_kbdlayout.sh"
-    },*/
 
     "hyprland/workspaces": {
         "all-outputs": true,
@@ -303,16 +301,27 @@
             "9": "九",
             "10": "十",
         },
-        "on-scroll-up": "hyprctl dispatch workspace e+1 1>/dev/null",
-        "on-scroll-down": "hyprctl dispatch workspace e-1 1>/dev/null",
+        "on-scroll-up": "hyprctl dispatch workspace e-1 1>/dev/null",
+        "on-scroll-down": "hyprctl dispatch workspace e+1 1>/dev/null",
         "sort-by-number": true,
         "active-only": false,
     },
 
+
     "hyprland/window": {
-        "max-length": 100,
-        "separate-outputs": true
+        "format": " {} ",
+        "max-length": 60,
+        "separate-outputs": true,
+        "offscreen-css" : true,
+        "offscreen-css-text": "(inactive)",
+        "rewrite": {
+            "(.*) — Mozilla Firefox": " $1",
+            "(.*) - fish": "> [$1]",
+            "(.*) - zsh": "> [$1]",
+            "(.*) - kitty": "> [$1]"
+        }
     },
+
 
     "pulseaudio": {
         "scroll-step": 3, // %, can be a float
@@ -363,5 +372,11 @@
     "tray": {
         "icon-size": 15,
         "spacing": 5
+    },
+
+    "custom/cava": {
+        "exec": "~/.config/hypr/scripts/waybarcava.sh",
+        "format": "{}",
+        }  
     }
 }
