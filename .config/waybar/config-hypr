@@ -20,7 +20,7 @@
         "hyprland/workspaces",
         //"hyprland/submap",
         "temperature",
-        //"idle_inhibitor",
+        "idle_inhibitor",
         //"mpd",
         "hyprland/window",
     ],
