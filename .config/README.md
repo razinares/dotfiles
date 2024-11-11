@@ -1,10 +1,13 @@
 ### List of apps
 
-hyprland
+hyprland-git
 hyprlock
 hypridle
 waybar
 wlogout
-alacritty
-mako
 rofi-wayland
+fastfetch
+yazi
+qt6ct
+### Bar
+HyprPanel
